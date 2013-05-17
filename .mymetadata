@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="SurveySystem"
+  id="myeclipse.1368801762302"
+  context-root="/SurveySystem"
+  j2ee-spec="5.0"
+  archive="SurveySystem.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
