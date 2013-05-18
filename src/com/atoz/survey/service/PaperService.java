@@ -8,6 +8,7 @@ public interface PaperService {
 	
 	List<Paper> findAllPapers();
 	List<Paper> findPaperByUserId(int userId);
+	List<Paper> findPaperByPaperType(int paperType);
 	
 	Paper findPaperByPaperId(int paperId);
 	Paper showResultByPaperId(int paperId);

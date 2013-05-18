@@ -1,4 +1,5 @@
 package com.atoz.survey.dao.mysqlimpl;
+
 /**
  * Database BaseDao
  * 
@@ -121,8 +122,8 @@ public class BaseDao {
 	public void doInit() {
 		getConn();
 		String sql = null;
-		
-		//Init table "Users"
+
+		// Init table "Users"
 		if (existTable("Users")) {
 			sql = "DROP TABLE Users";
 			doOperate(sql);
@@ -132,24 +133,24 @@ public class BaseDao {
 			sql = "INSERT INTO Users VALUES(NULL, 'admin', 'admin', 'admin.png', 'admin@singlex.net', '2012-12-12 12:12:12', '1', '0', '1;2;3;4;5')";
 			doOperate(sql);
 		}
-		//Init Table "Papers"
+		// Init Table "Papers"
 		if (existTable("Papers")) {
 			sql = "DROP TABLE Papers";
 			doOperate(sql);
-		} else{
+		} else {
 			sql = "CREATE TABLE Papers(paperId INT PRIMARY KEY AUTO_INCREMENT, userId INT, userName NVARCHAR(40), paperTitle NVARCHAR(100), paperSummary NVARCHAR(300), paperStartDate DATETIME, paperEndDate DATETIME, paperBg NVARCHAR(40), paperType INT, paperStatus INT, paperCount INT)";
 			doOperate(sql);
 			sql = "INSERT INTO Papers VALUES(NULL, '1', '0', 'admin', 'Test paper', 'This is a test paper! Enjoy it!', '2013-05-01 12:00:00', '2013-05-10 12:00:00', 'bg_01.png', '1', '1', '99')";
 			doOperate(sql);
 		}
-		//Init Table "PaperContents"
-		if (existTable("PaperContents")) {
-			sql = "DROP TABLE PaperContents";
+		// Init Table "Questions"
+		if (existTable("Questions")) {
+			sql = "DROP TABLE Questions";
 			doOperate(sql);
 		} else {
-			sql = "CREATE TABLE PaperContents(paperId INT PRIMARY KEY AUTO_INCREMENT, qstId INT, qstType INT, qstTile NVARCHAR(100), qstOption NVARCHAR(1000), qstAnswer NVARCHAR(1000))";
+			sql = "CREATE TABLE Questions(qstId INT PRIMARY KEY AUTO_INCREMENT, paperId INT, qstType INT, qstTile NVARCHAR(100), qstOption NVARCHAR(1000), qstAnswer NVARCHAR(1000))";
 			doOperate(sql);
-			sql = "INSERT INTO PaperContents VALUES('0', '1', '1', 'First Question', 'A:刘红军;B:李朋伟 ;C:袁佑 ;D:郭宝星', '4;2;3;2')";
+			sql = "INSERT INTO Questions VALUES(NULL, '1', '1', 'First Question', 'A:刘红军;B:李朋伟 ;C:袁佑 ;D:郭宝星', '4;2;3;2')";
 			doOperate(sql);
 		}
 	}

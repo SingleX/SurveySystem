@@ -1,6 +1,6 @@
 package com.atoz.survey.po;
 /**
- * JavaBean：Paper
+ * JavaBean:Paper
  * 
  * @author SingleX
  *
