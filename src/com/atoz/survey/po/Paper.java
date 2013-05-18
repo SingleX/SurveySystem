@@ -1,20 +1,20 @@
 package com.atoz.survey.po;
 /**
- * JavaBean£ºPaper
+ * JavaBeanï¼šPaper
  * 
  * @author SingleX
  *
  */
 public class Paper {
-	private int paperId;//ÎÊ¾íIDºÅ
-	private String paperTitle;//ÎÊ¾í±êÌâ
-	private String paperSummary;//ÎÊ¾íÕªÒª½éÉÜ
-	private String paperStartDate;//ÎÊ¾í·¢²¼ÈÕÆÚ
-	private String paperEndDate;//ÎÊ¾í½áÊøÈÕÆÚ
-	private String paperBg;//ÎÊ¾í±³¾°Í¼Æ¬´æ´¢Â·¾¶
-	private int paperType;//ÎÊ¾í·ÖÀà
-	private int paperStatus;//ÎÊ¾í×´Ì¬
-	private int paperCount;//ÎÊ¾í»Ø´ğ´ÎÊı
+	private int paperId;//é—®å·IDå·
+	private String paperTitle;//é—®å·æ ‡é¢˜
+	private String paperSummary;//é—®å·æ‘˜è¦ä»‹ç»
+	private String paperStartDate;//é—®å·å‘å¸ƒæ—¥æœŸ
+	private String paperEndDate;//é—®å·ç»“æŸæ—¥æœŸ
+	private String paperBg;//é—®å·èƒŒæ™¯å›¾ç‰‡å­˜å‚¨è·¯å¾„
+	private int paperType;//é—®å·åˆ†ç±»
+	private int paperStatus;//é—®å·çŠ¶æ€
+	private int paperCount;//é—®å·å›ç­”æ¬¡æ•°
 	
 	public int getPaperId() {
 		return paperId;

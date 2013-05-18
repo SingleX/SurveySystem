@@ -149,7 +149,7 @@ public class BaseDao {
 		} else {
 			sql = "CREATE TABLE PaperContents(paperId INT PRIMARY KEY AUTO_INCREMENT, qstId INT, qstType INT, qstTile NVARCHAR(100), qstOption NVARCHAR(1000), qstAnswer NVARCHAR(1000))";
 			doOperate(sql);
-			sql = "INSERT INTO PaperContents VALUES('0', '1', '1', 'First Question', 'A:Áõºì¾ü;B:ÀîÅóÎ° ;C:Ô¬ÓÓ ;D:¹ù±¦ĞÇ', '4,2,3,2')";
+			sql = "INSERT INTO PaperContents VALUES('0', '1', '1', 'First Question', 'A:åˆ˜çº¢å†›;B:ææœ‹ä¼Ÿ ;C:è¢ä½‘ ;D:éƒ­å®æ˜Ÿ', '4;2;3;2')";
 			doOperate(sql);
 		}
 	}

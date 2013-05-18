@@ -1,20 +1,20 @@
 package com.atoz.survey.po;
 /**
- * JavaBean£ºUser
+ * JavaBeanï¼šUser
  * 
  * @author SingleX
  *
  */
 public class User {
-	private int userId;//IDºÅ
-	private String userName;//ÓÃ»§Ãû
-	private String userPassword;//ÓÃ»§ÃÜÂë
-	private String userIcon;//ÓÃ»§Í·Ïñ
-	private String userMail;//ÓÊÏä
-	private String userReg;//×¢²áÈÕÆÚ
-	private int userSex;//ĞÔ±ğ    0-Î´Öª,1-ÄĞ,2-Å®
-	private int userRole;//ÓÃ»§½ÇÉ«    0-¹ÜÀíÔ±,1-×¢²áÓÃ»§
-	private String userPaperId;//ÓÃ»§ÎÊ¾íºÅ
+	private int userId;//IDå·
+	private String userName;//ç”¨æˆ·å
+	private String userPassword;//ç”¨æˆ·å¯†ç 
+	private String userIcon;//ç”¨æˆ·å¤´åƒ
+	private String userMail;//é‚®ç®±
+	private String userReg;//æ³¨å†Œæ—¥æœŸ
+	private int userSex;//æ€§åˆ«    0-æœªçŸ¥,1-ç”·,2-å¥³
+	private int userRole;//ç”¨æˆ·è§’è‰²    0-ç®¡ç†å‘˜,1-æ³¨å†Œç”¨æˆ·
+	private String userPaperId;//ç”¨æˆ·é—®å·å·
 	
 	public int getUserId() {
 		return userId;
