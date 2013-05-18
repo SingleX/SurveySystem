@@ -12,8 +12,9 @@ public class Paper {
 	private String paperStartDate;//问卷发布日期
 	private String paperEndDate;//问卷结束日期
 	private String paperBg;//问卷背景图片存储路径
+	private int paperType;//问卷分类
+	private int paperStatus;//问卷状态
 	private int paperCount;//问卷回答次数
-	private boolean paperStatus;//问卷状态
 	
 	public int getPaperId() {
 		return paperId;
@@ -57,10 +58,16 @@ public class Paper {
 	public void setPaperCount(int paperCount) {
 		this.paperCount = paperCount;
 	}
-	public boolean isPaperStatus() {
+	public int getPaperType() {
+		return paperType;
+	}
+	public void setPaperType(int paperType) {
+		this.paperType = paperType;
+	}
+	public int getPaperStatus() {
 		return paperStatus;
 	}
-	public void setPaperStatus(boolean paperStatus) {
+	public void setPaperStatus(int paperStatus) {
 		this.paperStatus = paperStatus;
 	}
 }

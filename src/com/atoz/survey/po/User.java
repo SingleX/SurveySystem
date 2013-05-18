@@ -12,8 +12,8 @@ public class User {
 	private String userIcon;//用户头像
 	private String userMail;//邮箱
 	private String userReg;//注册日期
-	private String userSex;//性别
-	private String userRole;//用户角色（注册用户，管理员）
+	private int userSex;//性别    0-未知,1-男,2-女
+	private int userRole;//用户角色    0-管理员,1-注册用户
 	private String userPaperId;//用户问卷号
 	
 	public int getUserId() {
@@ -52,16 +52,16 @@ public class User {
 	public void setUserReg(String userReg) {
 		this.userReg = userReg;
 	}
-	public String getUserSex() {
+	public int getUserSex() {
 		return userSex;
 	}
-	public void setUserSex(String userSex) {
+	public void setUserSex(int userSex) {
 		this.userSex = userSex;
 	}
-	public String getUserRole() {
+	public int getUserRole() {
 		return userRole;
 	}
-	public void setUserRole(String userRole) {
+	public void setUserRole(int userRole) {
 		this.userRole = userRole;
 	}
 	public String getUserPaperId() {
