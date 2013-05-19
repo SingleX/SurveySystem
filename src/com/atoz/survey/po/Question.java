@@ -49,4 +49,17 @@ public class Question {
 	public void setQstAnswer(String qstAnswer) {
 		this.qstAnswer = qstAnswer;
 	}
+	public Question(int qstId, int paperId, int qstType, String qstTitle, String qstOption, String qstAnswer) {
+		super();
+		this.qstId = qstId;
+		this.paperId = paperId;
+		this.qstType = qstType;
+		this.qstTitle = qstTitle;
+		this.qstOption = qstOption;
+		this.qstAnswer = qstAnswer;
+	}
+	public Question() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 }

@@ -7,6 +7,7 @@ package com.atoz.survey.po;
  */
 public class Paper {
 	private int paperId;//问卷ID号
+	private int userId;//用户ID
 	private String paperTitle;//问卷标题
 	private String paperSummary;//问卷摘要介绍
 	private String paperStartDate;//问卷发布日期
@@ -69,5 +70,28 @@ public class Paper {
 	}
 	public void setPaperStatus(int paperStatus) {
 		this.paperStatus = paperStatus;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public Paper(int paperId, int userId, String paperTitle, String paperSummary, String paperStartDate, String paperEndDate, String paperBg, int paperType, int paperStatus, int paperCount) {
+		super();
+		this.paperId = paperId;
+		this.userId = userId;
+		this.paperTitle = paperTitle;
+		this.paperSummary = paperSummary;
+		this.paperStartDate = paperStartDate;
+		this.paperEndDate = paperEndDate;
+		this.paperBg = paperBg;
+		this.paperType = paperType;
+		this.paperStatus = paperStatus;
+		this.paperCount = paperCount;
+	}
+	public Paper() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 }

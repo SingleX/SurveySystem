@@ -14,7 +14,6 @@ public class User {
 	private String userReg;//注册日期
 	private int userSex;//性别    0-未知,1-男,2-女
 	private int userRole;//用户角色    0-管理员,1-注册用户
-	private String userPaperId;//用户问卷号
 	
 	public int getUserId() {
 		return userId;
@@ -64,10 +63,19 @@ public class User {
 	public void setUserRole(int userRole) {
 		this.userRole = userRole;
 	}
-	public String getUserPaperId() {
-		return userPaperId;
+	public User(int userId, String userName, String userPassword, String userIcon, String userMail, String userReg, int userSex, int userRole) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userPassword = userPassword;
+		this.userIcon = userIcon;
+		this.userMail = userMail;
+		this.userReg = userReg;
+		this.userSex = userSex;
+		this.userRole = userRole;
 	}
-	public void setUserPaperId(String userPaperId) {
-		this.userPaperId = userPaperId;
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 }
