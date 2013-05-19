@@ -128,9 +128,9 @@ public class BaseDao {
 			sql = "DROP TABLE Users";
 			doOperate(sql);
 		} else {
-			sql = "CREATE TABLE Users(userId INT PRIMARY KEY AUTO_INCREMENT, userName NVARCHAR(40), userPassword NVARCHAR(40), userIcon NVARCHAR(40), userMail NVARCHAR(40), userReg DATETIME, userSex int, userRole int, userPaperId NVARCHAR(MAX))";
+			sql = "CREATE TABLE Users(userId INT PRIMARY KEY AUTO_INCREMENT, userName NVARCHAR(40), userPassword NVARCHAR(40), userIcon NVARCHAR(40), userMail NVARCHAR(40), userReg DATETIME, userSex int, userRole int)";
 			doOperate(sql);
-			sql = "INSERT INTO Users VALUES(NULL, 'admin', 'admin', 'admin.png', 'admin@singlex.net', '2012-12-12 12:12:12', '1', '0', '1;2;3;4;5')";
+			sql = "INSERT INTO Users VALUES(NULL, 'admin', 'admin', 'admin.png', 'admin@singlex.net', '2012-12-12 12:12:12', '1', '0')";
 			doOperate(sql);
 		}
 		// Init Table "Papers"

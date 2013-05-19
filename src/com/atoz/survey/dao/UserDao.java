@@ -12,8 +12,8 @@ List<User> findAllUsers();
 	User findUserByUserName(String userName);
 
 	boolean isValidateUser(String userName, String userPassword);
-	boolean	isLogin();
-	boolean	isAdmin();
+	boolean	isLogin(String userName);
+	boolean	isAdmin(String userName);
 	
 	int addUsers(User user);
 	int modifyUsers(User user);

@@ -52,16 +52,16 @@ public class UserServiceImpl implements UserService {
 		return userDao.isValidateUser(userName, userPassword);
 	}
 
-	public boolean isLogin() {
+	public boolean isLogin(String userName) {
 		// TODO Auto-generated method stub
 		loadConfig();
-		return userDao.isLogin();
+		return userDao.isLogin(userName);
 	}
 
-	public boolean isAdmin() {
+	public boolean isAdmin(String userName) {
 		// TODO Auto-generated method stub
 		loadConfig();
-		return userDao.isAdmin();
+		return userDao.isAdmin(userName);
 	}
 
 	public int addUsers(User user) {

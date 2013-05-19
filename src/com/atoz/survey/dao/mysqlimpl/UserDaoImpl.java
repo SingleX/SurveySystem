@@ -36,42 +36,128 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
 	public User findUserByUserId(int userId) {
 		// TODO Auto-generated method stub
-		return null;
+		User user = null;
+		getConn();
+		String sql = "SELECT * FROM Users WHERE userId = ?";
+		doQuery(sql);
+		try {
+			if(rs.next()){
+				user = new User();
+				user.setUserId(rs.getInt(1));
+				user.setUserName(rs.getString(2));
+				user.setUserPassword(rs.getString(3));
+				user.setUserIcon(rs.getString(4));
+				user.setUserMail(rs.getString(5));
+				user.setUserReg(rs.getString(6));
+				user.setUserSex(rs.getInt(7));
+				user.setUserRole(rs.getInt(8));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		closeAll();
+		return user;
 	}
 
 	public User findUserByUserName(String userName) {
 		// TODO Auto-generated method stub
-		return null;
+		User user = null;
+		getConn();
+		String sql = "SELECT * FROM Users WHERE userName = ?";
+		doQuery(sql);
+		try {
+			if(rs.next()){
+				user = new User();
+				user.setUserId(rs.getInt(1));
+				user.setUserName(rs.getString(2));
+				user.setUserPassword(rs.getString(3));
+				user.setUserIcon(rs.getString(4));
+				user.setUserMail(rs.getString(5));
+				user.setUserReg(rs.getString(6));
+				user.setUserSex(rs.getInt(7));
+				user.setUserRole(rs.getInt(8));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		closeAll();
+		return user;
 	}
 
 	public boolean isValidateUser(String userName, String userPassword) {
 		// TODO Auto-generated method stub
+		if (userName == null || userPassword == null) {
+			return false;
+		}
+		User user = null;
+		getConn();
+		String sql = "SELECT * FROM Users WHERE userName = ?";
+		doQuery(sql, userName);
+		try {
+			if(rs.next()){
+				user = new User();
+				user.setUserName(rs.getString(2));
+				user.setUserPassword(rs.getString(3));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		closeAll();
+		if(user != null && userPassword.equals(user.getUserPassword()))
+			return true;
 		return false;
 	}
 
-	public boolean isLogin() {
+	public boolean isLogin(String userName) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public boolean isAdmin() {
+	public boolean isAdmin(String userName) {
 		// TODO Auto-generated method stub
+		User user = null;
+		getConn();
+		String sql = "SELECT * FROM Users WHERE userName = ?";
+		doOperate(sql, userName);
+		try {
+			if(rs.next()){
+				user = new User();
+				user.setUserRole(rs.getInt(8));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		closeAll();
+		if (user.getUserRole() == 0) {
+			return true;
+		}
 		return false;
 	}
 
 	public int addUsers(User user) {
 		// TODO Auto-generated method stub
+		getConn();
+		String sql = "INSERT INTO Users VALUES(NULL, ?, ?, ?, ?, ?, ?, ?)";
+		doOperate(sql, user.getUserName(), user.getUserPassword(), user.getUserIcon(), user.getUserMail(), user.getUserReg(), user.getUserSex(), user.getUserRole());
+		closeAll();
 		return 0;
 	}
 
 	public int modifyUsers(User user) {
 		// TODO Auto-generated method stub
+		getConn();
+		String sql = "UPDATE Users SET userPassword = ?, userIcon = ?, userMail = ?, userReg = ?, userSex = ?, userRole = ?";
+		doOperate(sql, user.getUserPassword(), user.getUserIcon(), user.getUserMail(), user.getUserReg(), user.getUserSex(), user.getUserRole());
+		closeAll();
 		return 0;
 	}
 
 	public int deleteUsers(int userId) {
 		// TODO Auto-generated method stub
+		getConn();
+		String sql = "DELETE FROM Users WHERE userId = ?";
+		doOperate(sql, userId);
+		closeAll();
 		return 0;
 	}
-
 }
