@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 	File file = new File("Config.properties");
 	Properties properties = new Properties();
 
-	String userDaoString = null;
+	String userDaoString = "";
 	UserDao userDao = null;
 
 	public void loadConfig() {
@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 			userDao = (UserDao) Class.forName(userDaoString).newInstance();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Loading Config.properties Failed!");
 		}
 	}
 

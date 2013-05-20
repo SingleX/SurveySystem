@@ -11,10 +11,6 @@ public interface UserService {
 	User findUserByUserId(int userId);
 	User findUserByUserName(String userName);
 
-	boolean isValidateUser(String userName, String userPassword);
-	boolean	isLogin(String userName);
-	boolean	isAdmin(String userName);
-	
 	int addUsers(User user);
 	int modifyUsers(User user);
 	int deleteUsers(int userId);
