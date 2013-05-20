@@ -1,9 +1,9 @@
 package com.atoz.survey.service;
 
-public interface LoginService {
+import com.atoz.survey.po.Login;
 
-	boolean isValidateUser(String userName, String userPassword);
-	boolean	isLogin(String userName);
-	boolean	isAdmin(String userName);
+public interface LoginService {
+	
+	Login loginInfo(String userName, String userPassword);
 	
 }

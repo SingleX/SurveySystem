@@ -1,8 +1,8 @@
 package com.atoz.survey.dao;
 
+import com.atoz.survey.po.Login;
+
 public interface LoginDao {
 
-	boolean isValidateUser(String userName, String userPassword);
-	boolean	isLogin(String userName);
-	boolean	isAdmin(String userName);
+	Login loginInfo(String userName, String userPassword);
 }

@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 import com.atoz.survey.dao.LoginDao;
+import com.atoz.survey.po.Login;
 import com.atoz.survey.service.LoginService;
 
 public class LoginServiceImpl implements LoginService {
@@ -25,23 +26,9 @@ public class LoginServiceImpl implements LoginService {
 			System.out.println("Loading Config.properties Failed!");
 		}
 	}
-	
-	public boolean isValidateUser(String userName, String userPassword) {
-		// TODO Auto-generated method stub
-		loadConfig();
-		return loginDao.isValidateUser(userName, userPassword);
-	}
 
-	public boolean isLogin(String userName) {
+	public Login loginInfo(String userName, String userPassword) {
 		// TODO Auto-generated method stub
-		loadConfig();
-		return loginDao.isLogin(userName);
+		return loginDao.loginInfo(userName, userPassword);
 	}
-
-	public boolean isAdmin(String userName) {
-		// TODO Auto-generated method stub
-		loadConfig();
-		return loginDao.isAdmin(userName);
-	}
-
 }

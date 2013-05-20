@@ -7,16 +7,15 @@ package com.atoz.survey.po;
  */
 public class Login {
 	
-	private int userName;//用户名
+	private String userName;//用户名
 	private String userPassword;//密码
 	private int userRole;//用户角色
-	private String rtnMsg = "";//登录返回消息
 	private boolean success = false;//是否登录
 	
-	public int getUserName() {
+	public String getUserName() {
 		return userName;
 	}
-	public void setUserName(int userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 	public String getUserPassword() {
@@ -31,24 +30,17 @@ public class Login {
 	public void setUserRole(int userRole) {
 		this.userRole = userRole;
 	}
-	public String getRtnMsg() {
-		return rtnMsg;
-	}
-	public void setRtnMsg(String rtnMsg) {
-		this.rtnMsg = rtnMsg;
-	}
 	public boolean isSuccess() {
 		return success;
 	}
 	public void setSuccess(boolean success) {
 		this.success = success;
 	}
-	public Login(int userName, String userPassword, int userRole, String rtnMsg, boolean success) {
+	public Login(String userName, String userPassword, int userRole, boolean success) {
 		super();
 		this.userName = userName;
 		this.userPassword = userPassword;
 		this.userRole = userRole;
-		this.rtnMsg = rtnMsg;
 		this.success = success;
 	}
 	public Login() {

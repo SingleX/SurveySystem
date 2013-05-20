@@ -46,24 +46,6 @@ public class UserServiceImpl implements UserService {
 		return userDao.findUserByUserName(userName);
 	}
 
-	public boolean isValidateUser(String userName, String userPassword) {
-		// TODO Auto-generated method stub
-		loadConfig();
-		return userDao.isValidateUser(userName, userPassword);
-	}
-
-	public boolean isLogin(String userName) {
-		// TODO Auto-generated method stub
-		loadConfig();
-		return userDao.isLogin(userName);
-	}
-
-	public boolean isAdmin(String userName) {
-		// TODO Auto-generated method stub
-		loadConfig();
-		return userDao.isAdmin(userName);
-	}
-
 	public int addUsers(User user) {
 		// TODO Auto-generated method stub
 		loadConfig();
