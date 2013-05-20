@@ -84,56 +84,6 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		return user;
 	}
 
-	public boolean isValidateUser(String userName, String userPassword) {
-		// TODO Auto-generated method stub
-		if (userName == null || userPassword == null) {
-			return false;
-		}
-		User user = null;
-		getConn();
-		String sql = "SELECT * FROM Users WHERE userName = ?";
-		doQuery(sql, userName);
-		try {
-			if(rs.next()){
-				user = new User();
-				user.setUserName(rs.getString(2));
-				user.setUserPassword(rs.getString(3));
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		closeAll();
-		if(user != null && userPassword.equals(user.getUserPassword()))
-			return true;
-		return false;
-	}
-
-	public boolean isLogin(String userName) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean isAdmin(String userName) {
-		// TODO Auto-generated method stub
-		User user = null;
-		getConn();
-		String sql = "SELECT * FROM Users WHERE userName = ?";
-		doOperate(sql, userName);
-		try {
-			if(rs.next()){
-				user = new User();
-				user.setUserRole(rs.getInt(8));
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		closeAll();
-		if (user.getUserRole() == 0) {
-			return true;
-		}
-		return false;
-	}
-
 	public int addUsers(User user) {
 		// TODO Auto-generated method stub
 		getConn();

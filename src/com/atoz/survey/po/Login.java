@@ -9,8 +9,8 @@ public class Login {
 	
 	private String userName;//用户名
 	private String userPassword;//密码
-	private int userRole;//用户角色
-	private boolean success = false;//是否登录
+	private boolean admin = false;//用户角色
+	private boolean login = false;//是否登录
 	
 	public String getUserName() {
 		return userName;
@@ -24,24 +24,24 @@ public class Login {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
-	public int getUserRole() {
-		return userRole;
+	public boolean isAdmin() {
+		return admin;
 	}
-	public void setUserRole(int userRole) {
-		this.userRole = userRole;
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
-	public boolean isSuccess() {
-		return success;
+	public boolean isLogin() {
+		return login;
 	}
-	public void setSuccess(boolean success) {
-		this.success = success;
+	public void setLogin(boolean login) {
+		this.login = login;
 	}
-	public Login(String userName, String userPassword, int userRole, boolean success) {
+	public Login(String userName, String userPassword, boolean admin, boolean login) {
 		super();
 		this.userName = userName;
 		this.userPassword = userPassword;
-		this.userRole = userRole;
-		this.success = success;
+		this.admin = admin;
+		this.login = login;
 	}
 	public Login() {
 		super();

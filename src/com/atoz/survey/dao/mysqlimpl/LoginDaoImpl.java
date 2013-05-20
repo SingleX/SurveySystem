@@ -31,8 +31,10 @@ public class LoginDaoImpl extends BaseDao implements LoginDao {
 			login = new Login();
 			login.setUserName(user.getUserName());
 			login.setUserPassword(user.getUserPassword());
-			login.setUserRole(user.getUserRole());
-			login.setSuccess(true);
+			login.setLogin(true);
+			if (user.getUserRole() == 0) {
+				login.setAdmin(true);
+			}
 		}
 		return login;
 	}
