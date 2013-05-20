@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		/*主体部分表单搜索框*/
 		.jumbotron {
-			margin: 50px 0;
+			margin: 60px 0;
 			text-align: center;		
 		}
 		#paperId {
@@ -44,19 +44,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-responsive.css">
 	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-	<script src="js/bootstrap.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+      	<script src="js/html5shiv.js"></script>
+    <![endif]-->
   </head>
   
   <body>
     <div class="container-narrow">
     	<div class="masthead">
     		<ul class="nav nav-pills pull-right">
-    			<li><a href="">登录</a></li>
+    			<li><a href="#myModal" role="button" class="btn" data-toggle="modal">登录</a></li>
     			<li><a href="">注册</a></li>
     		</ul>
     		<h1>iWen</h1>
     	</div>
+    	<!-- 以下内容默认隐藏，脚本弹窗实现登录和用户注册 -->
+    	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">用户登录</h3>
+			</div>
+			<div class="modal-body">
+			
+				<form class="form-horizontal" action="" method="post">
+				  	<div class="control-group">
+				    	<label class="control-label" for="inputUserName">账号</label>
+					    <div class="controls">
+					    	<input type="text" id="inputUserName" placeholder="请输入用户名">
+					    </div>
+				  	</div>
+				  	<div class="control-group">
+				    	<label class="control-label" for="inputPassword">密码</label>
+					    <div class="controls">
+					      	<input type="password" id="inputPassword" placeholder="请输入密码">
+					    </div>
+				  	</div>
+				  	<div class="control-group controls">
+				      	<button type="submit" class="btn btn-primary">登录</button>
+				  	</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" data-dismiss="modal" aria-hidden="true">注册账号</button>
+				<button class="btn">关闭</button>
+			</div>
+		</div>
     	<hr>
     	<div class="jumbotron">
     	<form action="" method="post">
@@ -75,6 +107,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<p>这里可以显示热门回答的几个问题,这里可以显示热门回答的几个问题</p>
     			<h4>热门回答3</h4>
     			<p>这里可以显示热门回答的几个问题,这里可以显示热门回答的几个问题</p>
+    			<h4>热门回答4</h4>
+    			<p>这里可以显示热门回答的几个问题,这里可以显示热门回答的几个问题</p>
     		</div>
     		<div class="span6">
     			<h4>最新发布1</h4>
@@ -83,13 +117,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<p>这里可以显示热门回答的几个问题,这里可以显示热门回答的几个问题</p>
     			<h4>热门回答3</h4>
     			<p>这里可以显示热门回答的几个问题,这里可以显示热门回答的几个问题</p>
+    			<h4>热门回答4</h4>
+    			<p>这里可以显示热门回答的几个问题,这里可以显示热门回答的几个问题</p>
     		</div>
     	</div>
     	<hr>
     	<div class="footer">
-    		<p>&copy;AtoZ 2013</p>
+    		<p>&copy; AtoZ · 2013</p>
     	</div>
-    
     </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/html5shiv.js"></script>
+	<script src="js/bootstrap.min.js"></script>
   </body>
 </html>
