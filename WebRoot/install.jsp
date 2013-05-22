@@ -91,5 +91,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    %>
    </p>
     <br>-- 数据库初始化完成 --<br>
+    <br>-- 为保证数据安全，安装成功后请删除install.jsp --<br>
   </body>
 </html>
