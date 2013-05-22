@@ -47,18 +47,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--[if lt IE 9]>
       	<script src="js/html5shiv.js"></script>
     <![endif]-->
+    <script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+	$(document).ready(function(){
+  		$("#tip").click(function(){
+    		$(this).parent().hide();
+  		});
+	});
+	
+	function check() {
+		var name = document.getElementById("inputUserName");
+		var pass = document.getElementById("inputPassword");
+		if (name.value == "" || pass.value == "") {
+			$(".alert").show();
+			return false;
+		}
+	};
+</script>
   </head>
-  
   <body>
     <div class="container-narrow">
     	<div class="masthead">
     		<ul class="nav nav-pills pull-right">
     			<li><a href="#myModal" role="button" class="btn" data-toggle="modal">登录</a></li>
-    			<li><a href="">注册</a></li>
+    			<li>&nbsp;</li>
+    			<li><a href="" role="button" class="btn">注册</a></li>
     		</ul>
     		<h1>iWen</h1>
     	</div>
     	<!-- 以下内容默认隐藏，脚本弹窗实现登录和用户注册 -->
+    	<!-- form start -->
+		<form class="form-horizontal" action="" method="post" onSubmit="return check()">
     	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -66,27 +86,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="modal-body">
 			
-				<form class="form-horizontal" action="" method="post">
+				<%
+				String code = request.getParameter("code");
+				if(code != null && "00".equals(code)){
+				%>
+					<div class="alert alert-warning fade in">
+						<button class="close" data-dismiss="alert" type="button">x</button>
+						<center>请输入完整用户名和密码！</center>
+					</div>
+				<%
+				}else if(code != null && "01".equals(code)){
+				%>
+				<div class="alert alert-error fade in">
+					<button class="close" data-dismiss="alert" type="button">x</button>
+					<center>用户名或密码错误！</center>
+				</div>
+				<%
+				}else if(code != null && "00".equals(code)){
+				%>
+				<div class="alert alert-success fade in">
+					登录成功。。。。
+				</div>
+				<%
+				}
+				 %>
+				 	<div class="alert alert-warning fade in" style="display:none;">
+						<a id="tip" class="close">x</a>
+						<center>请输入完整用户名和密码！</center>
+					</div>
 				  	<div class="control-group">
 				    	<label class="control-label" for="inputUserName">账号</label>
 					    <div class="controls">
-					    	<input type="text" id="inputUserName" placeholder="请输入用户名">
+					    	<input type="text" id="inputUserName" placeholder="username">
 					    </div>
 				  	</div>
 				  	<div class="control-group">
 				    	<label class="control-label" for="inputPassword">密码</label>
 					    <div class="controls">
-					      	<input type="password" id="inputPassword" placeholder="请输入密码">
+					      	<input type="password" id="inputPassword" placeholder="password">
 					    </div>
 				  	</div>
 				  	<div class="control-group controls">
 				      	<button type="submit" class="btn btn-primary">登录</button>
+				      	<button type="reset" class="btn">重置</button>
 				  	</div>
-				</form>
+				</form><!-- form end -->
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-success" data-dismiss="modal" aria-hidden="true">注册账号</button>
-				<button class="btn">关闭</button>
+				<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
 			</div>
 		</div>
     	<hr>
@@ -126,8 +174,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<p>&copy; AtoZ · 2013</p>
     	</div>
     </div>
-    <script src="js/jquery.js"></script>
-    <script src="js/html5shiv.js"></script>
-	<script src="js/bootstrap.min.js"></script>
   </body>
 </html>

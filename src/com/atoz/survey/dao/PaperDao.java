@@ -11,7 +11,7 @@ public interface PaperDao {
 	List<Paper> findPaperByPaperType(int paperType);
 	
 	Paper findPaperByPaperId(int paperId);
-	Paper showResultByPaperId(int paperId);
+//	Paper showResultByPaperId(int paperId);
 	
 	int addPapers(Paper paper);
 	int deletePaperByPaperId(int paperId);
