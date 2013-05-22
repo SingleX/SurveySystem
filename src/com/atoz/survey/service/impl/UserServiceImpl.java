@@ -11,7 +11,7 @@ import com.atoz.survey.service.UserService;
 
 public class UserServiceImpl implements UserService {
 
-	File file = new File("Config.properties");
+	File file = new File("C:\\config.properties");
 	Properties properties = new Properties();
 
 	String userDaoString = "";

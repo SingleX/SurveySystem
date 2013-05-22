@@ -8,9 +8,6 @@ public class LoginDaoImpl extends BaseDao implements LoginDao {
 
 	public Login loginInfo(String userName, String userPassword) {
 		// TODO Auto-generated method stub
-		if (userName == "" || userPassword == "") {
-			return null;
-		}
 		User user = null;
 		Login login = null;
 		getConn();
@@ -27,14 +24,19 @@ public class LoginDaoImpl extends BaseDao implements LoginDao {
 			// TODO: handle exception
 		}
 		closeAll();
+		login = new Login();
 		if (user != null && userName.equals(user.getUserName()) && userPassword.equals(user.getUserPassword())) {
-			login = new Login();
 			login.setUserName(user.getUserName());
 			login.setUserPassword(user.getUserPassword());
 			login.setLogin(true);
 			if (user.getUserRole() == 0) {
 				login.setAdmin(true);
 			}
+		} else {
+			login.setUserName(userName);
+			login.setUserPassword(userPassword);
+			login.setLogin(false);
+			login.setAdmin(false);
 		}
 		return login;
 	}
