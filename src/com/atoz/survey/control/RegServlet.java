@@ -1,6 +1,9 @@
 package com.atoz.survey.control;
 
 import java.io.IOException;
+import java.util.*;
+import java.text.*;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,15 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.atoz.survey.po.Login;
+import com.atoz.survey.po.User;
 import com.atoz.survey.service.LoginService;
+import com.atoz.survey.service.UserService;
 import com.atoz.survey.service.impl.LoginServiceImpl;
+import com.atoz.survey.service.impl.UserServiceImpl;
 
-public class LoginServlet extends HttpServlet {
+public class RegServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public LoginServlet() {
+	public RegServlet() {
 		super();
 	}
 
@@ -46,31 +52,36 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String userName = request.getParameter("inputUserName").trim();
-		String userPassword = request.getParameter("inputPassword").trim();
-		
-		String rtnMsg = "ERROR";
+		String userName = request.getParameter("inputUserName");
+		String userPassword = request.getParameter("inputPassword");
+		String userSexString = request.getParameter("inputSex");
+		int userSex = Integer.parseInt(userSexString);
+		String userEmail = request.getParameter("inputEmail");
+
+		Date now = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance();
+		String datetime = dateFormat.format(now);
+
+		UserService userService = new UserServiceImpl();
+		if (userService.findUserByUserName(userName) == null) {
+			User user = new User();
+			user.setUserName(userName);
+			user.setUserPassword(userPassword);
+			user.setUserIcon("default_icon.png");
+			user.setUserMail(userEmail);
+			user.setUserReg(datetime);
+			user.setUserSex(userSex);
+			user.setUserRole(1);
+			userService.addUsers(user);
+		}
 		Login login = null;
 		LoginService loginService = new LoginServiceImpl();
+		// 登录成功，带着登录信息跳转到个人中心：home.jsp
+		login = loginService.loginInfo(userName, userPassword);
+		HttpSession session = request.getSession();
+		session.setAttribute("loginInfo", login);
+		response.sendRedirect("home.jsp");
 
-		if (userName != null && userPassword != null) {
-			// 登录成功，带着登录信息跳转到个人中心：home.jsp
-			login = loginService.loginInfo(userName, userPassword);
-		}
-		if (login == null || login.isLogin() == false) {
-			login = new Login();
-			login.setUserName(userName);
-			login.setUserPassword(userPassword);
-			login.setAdmin(false);
-			login.setLogin(false);
-			HttpSession session = request.getSession();
-			session.setAttribute("rtnMsg", rtnMsg);
-			response.sendRedirect("login.jsp");
-		} else {
-			HttpSession session = request.getSession();
-			session.setAttribute("loginInfo", login);
-			response.sendRedirect("home.jsp");
-		}
 	}
 
 	/**
@@ -91,7 +102,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		doGet(request, response);
+		this.doGet(request, response);
 	}
 
 	/**

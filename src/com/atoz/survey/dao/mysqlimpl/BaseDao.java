@@ -104,7 +104,7 @@ public class BaseDao {
 	boolean existTable(String tableName) {
 		DatabaseMetaData meta;
 		try {
-			meta = (DatabaseMetaData) conn.getMetaData();
+			meta = conn.getMetaData();
 			ResultSet rs = meta.getTables(null, null, tableName, null);
 			if (rs.next()) {
 				return true;
