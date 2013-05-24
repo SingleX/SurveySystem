@@ -15,12 +15,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="">
 	<meta http-equiv="description" content="">
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+	<!--[if lt IE 9]>
+      	<script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<style type="text/css">
-		body {
-			padding-top: 20px;
-			padding-bottom: 40px;
-		}
 		/*自定义容器*/
 		.container-narrow {
 			margin: 0 auto;
@@ -28,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		/*主体部分表单搜索框*/
 		.jumbotron {
-			margin: 60px 0;
+			margin: 50px 0;
 			text-align: center;		
 		}
 		#paperId {
@@ -41,14 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			margin-top: 28px;
 		}
 	</style>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/bootstrap-responsive.css">
-	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-	<!--[if lt IE 9]>
-      	<script src="js/html5shiv.js"></script>
-    <![endif]-->
-    <script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	
 </head>
 <body>
     <div class="container-narrow">

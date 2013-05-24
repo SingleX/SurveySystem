@@ -30,6 +30,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		#mycontent {
 			float: right;
 		}
+		#iframe {
+			width:960px;
+			height:530px;
+			border: 2px #E3E3E3 solid;
+			border-radius: 5px;
+		}
 		@media (max-width: 980px) {
 			.navbar-text.pull-right {
 				float: none;
@@ -51,7 +57,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--[if lt IE 9]>
       	<script src="js/html5shiv.js"></script>
     <![endif]-->
-    
+    <script type="text/javascript">
+		$(document).ready(function () {
+			var aLi = document.getElementById("tag").getElementsByTagName("li");
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].onClick = function () {
+					for (var j = 0; j < aLi.length; j++) {
+							aLi[j].removeClass("active");
+					}
+					aLi[i].addClass("active");
+				};
+			}
+		});
+</script>
 	<script src="js/bootstrap.min.js"></script>
 </head>
 
@@ -76,46 +94,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="container-fluid">
       	<div class="row-fluid">
         	<div id="mysidebar" class="span3">
-          		<div class="well sidebar-nav">
+          		<div id="tag" class="well sidebar-nav">
 		            <ul class="nav nav-list">
-		            	<li class="nav-header">欢迎登录</li>
-						<li class="active"><a href="#tab11">系统信息</a></li>
-						<li><a href="#tab12">关于</a></li>
+		            	<li class="nav-header">功能面板</li>
+						<br>
 						<li class="nav-header">用户管理</li>
-						<li><a href="#tab21">查看所有用户</a></li>
-						<li><a href="#tab22">查找用户</a></li>
-						<li><a href="#tab23">添加用户</a></li>
-						<li><a href="#tab24">编辑用户</a></li>
-						<li><a href="#tab25">删除用户</a></li>
+						<li><a href="adminServlet?action=findAllUsers" target="iframe">查看所有用户</a></li>
+						<li><a href="adminServlet?action=findUser" target="iframe">用户综合管理</a></li>
+						<li><a href="adminServlet?action=addUser" target="iframe">添加用户账号</a></li>
 						<li class="nav-header">问卷管理</li>
-						<li><a href="#tab31">查看所有问卷</a></li>
-						<li><a href="#tab32">查找问卷</a></li>
-						<li><a href="#tab33">编辑问卷</a></li>
-						<li><a href="#tab34">删除问卷</a></li>
+						<li><a href="adminSevlet?action=findAllPapers" target="iframe">查看所有问卷</a></li>
+						<li><a href="adminSevlet?action=findPaper" target="iframe">问卷综合管理</a></li>
 		            </ul>
           		</div><!--/.well -->
         	</div><!--/span-->
 	        <div id="mycontent" class="span9">
-	          	<div id="tab11" class="hero-unit">
-	            	<p>This is a template for a simple .</p>
-	        	</div>
-	        	<div id="tab12" class="row-fluid">
-		            <div id="tab21">
-		              <h2>Heading</h2>
-		              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-		              <p><a class="btn" href="#">View details &raquo;</a></p>
-		            </div><!--/span-->
-		            <div id="tab22">
-		              <h2>Heading</h2>
-		              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-		              <p><a class="btn" href="#">View details &raquo;</a></p>
-		            </div><!--/span-->
-		            <div class="span4">
-		              <h2>Heading</h2>
-		              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-		              <p><a class="btn" href="#">View details &raquo;</a></p>
-		            </div><!--/span-->
-	          	</div><!--/row-->
+	          	<iframe class="span9" id="iframe" src="iframe.jsp" name="iframe"></iframe>
 	    	</div>
 		</div>
     </div>

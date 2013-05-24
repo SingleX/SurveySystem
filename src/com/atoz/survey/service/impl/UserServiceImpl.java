@@ -24,7 +24,6 @@ public class UserServiceImpl implements UserService {
 			userDao = (UserDao) Class.forName(userDaoString).newInstance();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("Loading Config.properties Failed!");
 		}
 		return userDao.findAllUsers();
 	}
@@ -37,7 +36,6 @@ public class UserServiceImpl implements UserService {
 			userDao = (UserDao) Class.forName(userDaoString).newInstance();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("Loading Config.properties Failed!");
 		}
 		return userDao.findUserByUserId(userId);
 	}
@@ -50,7 +48,6 @@ public class UserServiceImpl implements UserService {
 			userDao = (UserDao) Class.forName(userDaoString).newInstance();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("Loading Config.properties Failed!");
 		}
 		return userDao.findUserByUserName(userName);
 	}
@@ -63,7 +60,6 @@ public class UserServiceImpl implements UserService {
 			userDao = (UserDao) Class.forName(userDaoString).newInstance();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("Loading Config.properties Failed!");
 		}
 		return userDao.addUsers(user);
 	}
@@ -76,7 +72,6 @@ public class UserServiceImpl implements UserService {
 			userDao = (UserDao) Class.forName(userDaoString).newInstance();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("Loading Config.properties Failed!");
 		}
 		return userDao.modifyUsers(user);
 	}
@@ -89,7 +84,6 @@ public class UserServiceImpl implements UserService {
 			userDao = (UserDao) Class.forName(userDaoString).newInstance();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("Loading Config.properties Failed!");
 		}
 		return userDao.deleteUsers(userId);
 	}
