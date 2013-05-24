@@ -103,8 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li><a href="adminServlet?action=findUser" target="iframe">用户综合管理</a></li>
 						<li><a href="adminServlet?action=addUser" target="iframe">添加用户账号</a></li>
 						<li class="nav-header">问卷管理</li>
-						<li><a href="adminSevlet?action=findAllPapers" target="iframe">查看所有问卷</a></li>
-						<li><a href="adminSevlet?action=findPaper" target="iframe">问卷综合管理</a></li>
+						<li><a href="#" target="iframe">查看所有问卷</a></li>
+						<li><a href="#" target="iframe">问卷综合管理</a></li>
 		            </ul>
           		</div><!--/.well -->
         	</div><!--/span-->

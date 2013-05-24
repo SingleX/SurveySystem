@@ -39,7 +39,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		User user = null;
 		getConn();
 		String sql = "SELECT * FROM Users WHERE userId = ?";
-		doQuery(sql);
+		doQuery(sql, userId);
 		try {
 			if(rs.next()){
 				user = new User();
@@ -64,7 +64,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		User user = null;
 		getConn();
 		String sql = "SELECT * FROM Users WHERE userName = ?";
-		doQuery(sql);
+		doQuery(sql, userName);
 		try {
 			if(rs.next()){
 				user = new User();
@@ -96,8 +96,8 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	public int modifyUsers(User user) {
 		// TODO Auto-generated method stub
 		getConn();
-		String sql = "UPDATE Users SET userPassword = ?, userIcon = ?, userMail = ?, userReg = ?, userSex = ?, userRole = ?";
-		doOperate(sql, user.getUserPassword(), user.getUserIcon(), user.getUserMail(), user.getUserReg(), user.getUserSex(), user.getUserRole());
+		String sql = "UPDATE Users SET userPassword = ?, userIcon = ?, userMail = ?, userReg = ?, userSex = ?, userRole = ? WHERE userId = ?";
+		doOperate(sql, user.getUserPassword(), user.getUserIcon(), user.getUserMail(), user.getUserReg(), user.getUserSex(), user.getUserRole(), user.getUserId());
 		closeAll();
 		return 0;
 	}

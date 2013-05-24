@@ -51,7 +51,7 @@ public class RegServlet extends HttpServlet {
 	 */
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String from = request.getParameter("from");
 		String userName = request.getParameter("inputUserName");
 		String userPassword = request.getParameter("inputPassword");
 		String userSexString = request.getParameter("inputSex");
@@ -74,14 +74,19 @@ public class RegServlet extends HttpServlet {
 			user.setUserRole(1);
 			userService.addUsers(user);
 		}
-		Login login = null;
-		LoginService loginService = new LoginServiceImpl();
-		// 登录成功，带着登录信息跳转到个人中心：home.jsp
-		login = loginService.loginInfo(userName, userPassword);
-		HttpSession session = request.getSession();
-		session.setAttribute("loginInfo", login);
-		response.sendRedirect("home.jsp");
-
+		if (from != null && from.equals("fromAdmin")) {
+			HttpSession session = request.getSession();
+			session.setAttribute("tips", "SUCCESS");
+			response.sendRedirect("iframe.jsp");
+		} else {
+			Login login = null;
+			LoginService loginService = new LoginServiceImpl();
+			// 登录成功，带着登录信息跳转到个人中心：home.jsp
+			login = loginService.loginInfo(userName, userPassword);
+			HttpSession session = request.getSession();
+			session.setAttribute("loginInfo", login);
+			response.sendRedirect("home.jsp");
+		}
 	}
 
 	/**

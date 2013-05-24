@@ -32,7 +32,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.input-prepend {
 			margin-left: 20px;
 		}
-		.input-prepend input {
+		.input-prepend input{
+			height: 30px;
+			line-height: 30px;
+		}
+		.form-horizontal input {
 			height: 30px;
 			line-height: 30px;
 		}
@@ -108,34 +112,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <%
     	session.removeAttribute("findUser");
     	}
+    	//根据用户ID或用户名查找结果,修改资料
     	User findUserResult = (User) session.getAttribute("findUserResult");
     	if( findUserResult != null ){
     %>
-    <table class="table table-hover">
-    	<thead>
-    		<td>ID</td>
-    		<td>账号</td>
-    		<td>密码</td>
-    		<td>头像</td>
-    		<td>邮箱</td>
-    		<td>注册时间</td>
-    		<td>性别</td>
-    		<td>权限</td>
-    	</thead>
-	    <tr>
-	    	<td><%=findUserResult.getUserId() %></td>
-	    	<td><%=findUserResult.getUserName() %></td>
-	    	<td><%=findUserResult.getUserPassword() %></td>
-	    	<td><%=findUserResult.getUserIcon() %></td>
-	    	<td><%=findUserResult.getUserMail() %></td>
-	    	<td><%=findUserResult.getUserReg() %></td>
-	    	<td><%=findUserResult.getUserSex() %></td>
-	    	<td><%=findUserResult.getUserRole() %></td>
-	    </tr>
-	</table>
+    <span class="path"><i class="icon-home"></i> > 用户管理 > 用户综合管理 > 查找结果</span>
+    <hr>
+	<!-- form start -->
+			<form class="form-horizontal" action="adminServlet" method="post">
+			  	<div class="control-group">
+			    	<label class="control-label" for="inputUserName">用户名</label>
+				    <div class="controls">
+				    	<input type="text" id="inputUserName" name="modifyUserName" value="<%=findUserResult.getUserName() %>">
+				    </div>
+			  	</div>
+			  	<div class="control-group">
+			    	<label class="control-label" for="inputPassword">密码</label>
+				    <div class="controls">
+				      	<input type="password" id="inputPassword" name="modifyPassword" value="<%=findUserResult.getUserPassword() %>">
+				    </div>
+			  	</div>
+			  	<div class="control-group">
+			    	<label class="control-label" for="inputPassword">重复密码</label>
+				    <div class="controls">
+				      	<input type="password" id="inputPassword2" name="modifyPassword2" value="">
+				    </div>
+			  	</div>
+			  	<div class="control-group">
+			    	<label class="control-label" for="inputEmail">安全邮箱</label>
+				    <div class="controls">
+				    	<input type="email" id="inputEmail" name="modifyEmail" value="<%=findUserResult.getUserMail() %>">
+				    </div>
+			  	</div>
+			  	<div class="control-group controls">
+			      	<button type="submit" class="btn btn-success">修改资料</button> 
+			      	<a class="btn btn-danger" href="adminServlet?deleteId=<%=findUserResult.getUserId() %>">删除此账号</a>
+			  	</div>
+			</form><!-- form end -->
     <%	
     	session.removeAttribute("findUserResult");
     	}
+    	//添加用户账号
     	String addUser = (String) session.getAttribute("addUser");
     	if(addUser != null && addUser.equals("addUser")){
     %>
@@ -173,12 +190,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    </div>
 			  	</div>
 			  	<div class="control-group controls">
+			  		<input type="hidden" name="from" value="fromAdmin">
 			      	<button type="submit" class="btn btn-success">添加账号</button>
 			      	<button type="reset" class="btn">重置</button>
 			  	</div>
 			</form><!-- form end -->
     <%
     	session.removeAttribute("addUser");
+    	}
+    	String tips = (String) session.getAttribute("tips");
+    	if(tips != null){
+    		if(tips.equals("SUCCESS")){
+    %>
+     <span class="path"><i class="icon-home"></i>> 系统消息</span>
+     <br><br><br><br>
+     <p align="center"><i class="icon-info-sign"></i> 系统提示：操作成功！</p>
+    <%	
+    	
+    		} else if(tips.equals("ERROR")){
+    %>
+     <span class="path"><i class="icon-home"></i>> 系统消息</span>
+     <br><br><br><br>
+     <p align="center"><i class="icon-info-sign"></i> 系统提示：操作失败！</p>
+    <%	
+    		}
+    		session.removeAttribute("tips");
     	}
     %>
   </body>
