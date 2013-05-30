@@ -1,6 +1,8 @@
 package com.atoz.survey.control;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,8 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.atoz.survey.po.Login;
+import com.atoz.survey.po.Paper;
+import com.atoz.survey.po.User;
 import com.atoz.survey.service.LoginService;
+import com.atoz.survey.service.PaperService;
+import com.atoz.survey.service.UserService;
 import com.atoz.survey.service.impl.LoginServiceImpl;
+import com.atoz.survey.service.impl.PaperServiceImpl;
+import com.atoz.survey.service.impl.UserServiceImpl;
 
 public class LoginServlet extends HttpServlet {
 
@@ -51,7 +59,10 @@ public class LoginServlet extends HttpServlet {
 		
 		String rtnMsg = "ERROR";
 		Login login = null;
+		User user = null;
 		LoginService loginService = new LoginServiceImpl();
+		UserService userService = new UserServiceImpl();
+		PaperService paperService = new PaperServiceImpl();
 
 		if (userName != null && userPassword != null) {
 			// 登录成功，带着登录信息跳转到个人中心：home.jsp
@@ -67,8 +78,12 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("rtnMsg", rtnMsg);
 			response.sendRedirect("login.jsp");
 		} else {
+			user = new User();
+			user = userService.findUserByUserName(userName);
+			List<Paper> papers = paperService.findPaperByUserId(user.getUserId());
 			HttpSession session = request.getSession();
 			session.setAttribute("loginInfo", login);
+			session.setAttribute("papers", papers);
 			response.sendRedirect("home.jsp");
 		}
 	}

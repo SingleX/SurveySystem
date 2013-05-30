@@ -11,6 +11,7 @@ public interface PaperDao {
 	List<Paper> findPaperByPaperType(int paperType);
 	
 	Paper findPaperByPaperId(int paperId);
+	int   findPaperIdByuserIdAndDate(int userId,String paperStartDate);
 //	Paper showResultByPaperId(int paperId);
 	
 	int addPapers(Paper paper);

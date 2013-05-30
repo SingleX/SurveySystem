@@ -11,7 +11,8 @@ public interface PaperService {
 	List<Paper> findPaperByPaperType(int paperType);
 	
 	Paper findPaperByPaperId(int paperId);
-	Paper showResultByPaperId(int paperId);
+	int   findPaperIdByuserIdAndDate(int userId,String paperStartDate);
+//	Paper showResultByPaperId(int paperId);
 	
 	int addPapers(Paper paper);
 	int deletePaperByPaperId(int paperId);

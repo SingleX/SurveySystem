@@ -65,11 +65,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			pstmt = conn.prepareStatement(sql);
 			pstmt.executeUpdate();
 			out.print("插入数据成功：Users<br><br>");
-			sql = "CREATE TABLE Papers(paperId INT PRIMARY KEY AUTO_INCREMENT, userId INT, userName NVARCHAR(40), paperTitle NVARCHAR(100), paperSummary NVARCHAR(300), paperStartDate DATETIME, paperEndDate DATETIME, paperBg NVARCHAR(40), paperType INT, paperStatus INT, paperCount INT)";
+			sql = "CREATE TABLE Papers(paperId INT PRIMARY KEY AUTO_INCREMENT, userId INT, paperTitle NVARCHAR(100), paperSummary NVARCHAR(300), paperStartDate DATETIME, paperEndDate DATETIME, paperBg NVARCHAR(40), paperType INT, paperStatus INT, paperCount INT)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.executeUpdate();
 			out.print("创建表成功：Papers<br>");
-			sql = "INSERT INTO Papers VALUES(NULL, '1', 'admin', 'Test paper', 'This is a test paper! Enjoy it!', '2013-05-01 12:00:00', '2013-05-10 12:00:00', 'default_bg.png', '1', '1', '99')";
+			sql = "INSERT INTO Papers VALUES(NULL, '1', 'Test paper', 'This is a test paper! Enjoy it!', '2013-05-01 12:00:00', '2013-05-10 12:00:00', 'default_bg.png', '1', '1', '99')";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.executeUpdate();
 			out.print("插入数据成功：Papers<br><br>");
