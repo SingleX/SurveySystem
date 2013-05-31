@@ -1,25 +1,25 @@
 <%@page import="com.atoz.survey.dao.mysqlimpl.QuestionDaoImpl"%>
 <%@page import="com.atoz.survey.dao.QuestionDao"%>
 <%@page import="com.atoz.survey.po.Question"%>
-<%@page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE>
-<html lang="en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>问卷</title>
+    <title>My JSP 'scanservey.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="css/bookstrap-responsive.min.css" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]>
       	<script src="js/html5shiv.js"></script>
@@ -68,9 +68,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   }
   
   </style>
+
   </head>
   
-  <form action="SubmitSucess" method="post">
+ <body  style='background:url(img/06.jpg);'>
+    <div class="container">
+  	<div class="masthead">
+  		<ul class="nav nav-pills pull-right">
+  			<li><a href="#myMadel"  role="button" class="btn" data-toggle="modal"> 登陆</a></li>
+  			<li><a href="#"  class="btn" data-toggle="modal"> 注册</a></li>
+  		</ul>
+  		<h1>iwen</h1>
+  	</div>
+  	<hr>
+  	<hr>
+  	<div class="survey">
+  	<form action="sucess.jsp" method="post">
   	<% 
   		QuestionDao questionDao = new QuestionDaoImpl();
   		
@@ -111,8 +124,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		}
   		i++;
   	 } %>
-  	<input class="btn btn-sucess" type="submit" value="提交" name="submit">
+  	<input class="btn btn-sucess" type="submit" value="1" onClick="document.form1.action='sucess.jsp';">发布
   	<input class="btn btn-danger" type="reset" value="重置">
   	
   	</form>
+  	</div>
+  	
+  	<div class="mastfoot">
+  	  <label>wo de ai wei wo suo you</label>
+  	
+  	</div>
+  	</div>
+  </body>
 </html>

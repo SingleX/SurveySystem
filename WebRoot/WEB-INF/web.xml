@@ -23,6 +23,48 @@
     <servlet-name>AdminServlet</servlet-name>
     <servlet-class>com.atoz.survey.control.AdminServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>AddPaper</servlet-name>
+    <servlet-class>com.atoz.survey.control.AddPaper</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>AddQuestions</servlet-name>
+    <servlet-class>com.atoz.survey.control.AddQuestions</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DeletePage</servlet-name>
+    <servlet-class>com.atoz.survey.control.DeletePage</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>HomePage</servlet-name>
+    <servlet-class>com.atoz.survey.control.HomePage</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SubmitSucess</servlet-name>
+    <servlet-class>com.atoz.survey.control.SubmitSucess</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SurveyPage</servlet-name>
+    <servlet-class>com.atoz.survey.control.SurveyPage</servlet-class>
+  </servlet>
+
+
+
+
+
+
 
 
 
@@ -37,6 +79,30 @@
   <servlet-mapping>
     <servlet-name>AdminServlet</servlet-name>
     <url-pattern>/adminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddPaper</servlet-name>
+    <url-pattern>/addPaper</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddQuestions</servlet-name>
+    <url-pattern>/addQuestions</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeletePage</servlet-name>
+    <url-pattern>/deletePage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HomePage</servlet-name>
+    <url-pattern>/homePage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SubmitSucess</servlet-name>
+    <url-pattern>/submitSucess</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SurveyPage</servlet-name>
+    <url-pattern>/surveyPage</url-pattern>
   </servlet-mapping>	
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

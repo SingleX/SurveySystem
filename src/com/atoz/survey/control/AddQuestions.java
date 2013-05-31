@@ -66,16 +66,14 @@ public class AddQuestions extends HttpServlet {
 		QuestionDao questionDao = new QuestionDaoImpl();
 		
 		HttpSession session = request.getSession();
-		String paperIdString = (String)session.getAttribute("paperId");
-		int paperId = Integer.parseInt(paperIdString);
+		Integer paperIdString = (Integer)session.getAttribute("paperId");
+		int paperId = paperIdString.intValue();
 		question.setPaperId(paperId);
-		
-		
 		
 //		@SuppressWarnings("unchecked")
 //		List<String> qstContent = (List<String>) session.getAttribute("qstContent");
 		
-		String qstTitle = request.getParameter("qsTtitle");
+		String qstTitle = request.getParameter("qstTitle");
 		question.setQstTitle(qstTitle);
 		
 		String qstTypeString = request.getParameter("qstType"); // 问题类型
@@ -100,16 +98,7 @@ public class AddQuestions extends HttpServlet {
 		
 		questionDao.addQuestions(question);
 		
-		//判断动作 继续添加问题  预览
-		String nextAction = request.getParameter("btnOnclick");
-		if(nextAction.equals("继续添加")){
-		response.sendRedirect("addquestion.jsp");
-		}
-		else if(nextAction.equals("预览")) {
-			
-			response.sendRedirect("scansurvey.jsp");
-			
-		}
+		response.sendRedirect("success.jsp");
 		
 	}
 

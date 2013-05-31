@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</ul>
     		
     	
-    		<form action="AddQuestions" method="post" class="form-horizontal">
+    		<form action="addQuestions" method="post" class="form-horizontal">
     			
     			<input type="hidden" value="1" name="qstType">
 				    <label>添加问题</label>
@@ -111,7 +111,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					    </div>
 				    </div>
 				    <input type="submit" name="sumbit" class="btn btn-success buttonspace" value="继续添加">
-				    <input type="submit"  name="sumbit" class="btn btn-success buttonspace" value="预览整个问卷">
     		</form>
     		
     	</div>

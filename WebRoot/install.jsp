@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			pstmt = conn.prepareStatement(sql);
 			pstmt.executeUpdate();
 			out.print("插入数据成功：Papers<br><br>");
-			sql = "CREATE TABLE Questions(qstId INT PRIMARY KEY AUTO_INCREMENT, paperId INT, qstType INT, qstTile NVARCHAR(100), qstOption NVARCHAR(1000), qstAnswer NVARCHAR(1000))";
+			sql = "CREATE TABLE Questions(qstId INT PRIMARY KEY AUTO_INCREMENT, paperId INT, qstType INT, qstTitle NVARCHAR(100), qstOption NVARCHAR(1000), qstAnswer NVARCHAR(1000))";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.executeUpdate();
 			out.print("创建表成功：Questions<br>");

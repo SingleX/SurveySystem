@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import com.atoz.survey.dao.PaperDao;
 import com.atoz.survey.dao.mysqlimpl.PaperDaoImpl;
 import com.atoz.survey.po.Paper;
+import com.atoz.survey.po.User;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 public class AddPaper extends HttpServlet {
 
@@ -68,8 +70,10 @@ public class AddPaper extends HttpServlet {
 		Paper paper = new Paper();
 		
 		HttpSession session = request.getSession();
-		String userIdString = (String)session.getAttribute("userId");
-		int userId = Integer.parseInt(userIdString);
+		
+		User user = (User) session.getAttribute("userInfo");
+		int userId = user.getUserId();
+
 		paper.setUserId(userId);
 		
 		String paperTitle = request.getParameter("paperTitle");
@@ -106,12 +110,13 @@ public class AddPaper extends HttpServlet {
 		int paperCount = 0;
 		paper.setPaperCount(paperCount);
 		
+	
 		paperDao.addPapers(paper);
 		
 		int paperId = paperDao.findPaperIdByuserIdAndDate(userId, paperStartDate);
 		
-		session.setAttribute("paperId", paperId);
-		response.sendRedirect("addsurvey.jsp");
+		session.setAttribute("paperId", new Integer(paperId));
+		response.sendRedirect("addquestion1.jsp");
 		
 	}
 

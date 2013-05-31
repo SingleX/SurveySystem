@@ -54,8 +54,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			color: #FFFFFF;
 			text-decoration: none;
 		}
-		.inputTitle {
-		
+		#inputTitle {
+			height: 30px;
+			line-height: 30px;
 		}
 	</style>
 	<!--[if lt IE 9]>
@@ -87,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</div>
     	<hr>
     	<div class="maincontent">
-    		<form action="AddPaper" method="post" class="form-horizontal">
+    		<form action="addPaper" method="post" class="form-horizontal">
     			
 				    <h3>发布问卷</h3>
 				    <div class="control-group">
