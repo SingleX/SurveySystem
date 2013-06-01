@@ -57,9 +57,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</div>
     	<hr>
     	<div class="jumbotron">
-			<form action="" method="post">
+			<form action="surveyPage" method="post">
 				<div class="input-append">
-					<input class="span6" id="paperId" type="text" placeholder="请输入问卷编号...">
+					<input class="span6" id="paperId" type="text" placeholder="请输入问卷编号..." name="paperId">
 					<button class="btn btn-large" type="submit">Go!</button>
 				</div>
 			</form>

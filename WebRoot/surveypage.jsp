@@ -69,50 +69,70 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   </style>
   </head>
-  
-  <form action="SubmitSucess" method="post">
-  	<% 
-  		QuestionDao questionDao = new QuestionDaoImpl();
-  		
-  		String ss =""; 
-  		String paperIdString = (String)session.getAttribute("paperId");
-  		int paperId = Integer.parseInt(paperIdString);
-  		List<Question> questions = questionDao.findQuestionsByPaperId(paperId);
-  		int totalNum = questions.size();
-  		int i = 1;
-  	%>
-  	<input type="hidden" name="totalNum" value=<%=questions.size() %>>
-  	<% for(Question question : questions){
-  		ss +="q" + i;
-  	%>
-  	
-  	<div class="div_question">
-  	<label><h5><%=question.getQstTitle() %></h5></label>
-  	<%
-  		String regex = "$#$";
-  		String content = question.getQstOption();
-  		if(content != ""){
-  		String[] options = content.split(regex);
-  		 for(String option :options){
-  			%>
-  			<label class="radio">
-		  	<input type="radio" name=<%=ss %> id=<%=ss %> value="1">
-		  	A、<%=option %>
-		  	</label>
-  			
-  		<% 
-  		
-  		 }
-  		}
-  		else{
-  		%>
-  		<textarea rows="4" cols="50" name=<%=ss %>></textarea>
-  		<% 
-  		}
-  		i++;
-  	 } %>
-  	<input class="btn btn-sucess" type="submit" value="提交" name="submit">
-  	<input class="btn btn-danger" type="reset" value="重置">
-  	
-  	</form>
+  <body style='background:url(img/06.jpg);'>
+	<div class="container">
+		<div class="masthead">
+			<ul class="nav nav-pills pull-right">
+				<li><a href="#myMadel" role="button" class="btn"
+					data-toggle="modal"> 登陆</a>
+				</li>
+				<li><a href="#" class="btn" data-toggle="modal"> 注册</a>
+				</li>
+			</ul>
+			<h1>iwen</h1>
+		</div>
+		<hr>
+		<hr>
+ <div class="survey">
+			<form action="submitSucess" method="post">
+				<%
+					QuestionDao questionDao = new QuestionDaoImpl();
+
+					String ss = "";
+					Integer paperIdInt = (Integer) session.getAttribute("paperId");
+					int paperId = paperIdInt.intValue();
+					List<Question> questions = questionDao
+							.findQuestionsByPaperId(paperId);
+					int totalNum = questions.size();
+					int i = 1;
+				%>
+				<input type="hidden" name="totalNum" value=<%=questions.size()%>>
+				<div class="div_question">
+				<%
+					for (Question question : questions) {
+						ss = "q" + i;
+				%>
+
+				
+					<label><h5><%=i %>、<%=question.getQstTitle()%></h5>
+					</label>
+					<%
+							String content = question.getQstOption();
+							if (content != null && (question.getQstType() == 1)) {
+								String[] options = content.split("#");
+								int j = 0;//跟踪选择的值变化
+								for (String option : options) {
+					%>
+					<label class="radio"> <input type="radio" name=<%=ss%>
+						id=<%=ss%> value=<%=j %>> <%=option%> </label>
+						
+
+					<%
+						j++;
+						}
+							} else {
+					%>
+					<textarea rows="4" cols="50" name=<%=ss%>></textarea>
+					<%
+						}
+							i++;	
+						}
+					%>
+					<br>
+					<input class="btn btn-success" type="submit" value="提交"> 
+					<input type="reset" class="btn btn-danger" >
+						</div>
+			</form>
+		</div>
+  	</div>
 </html>

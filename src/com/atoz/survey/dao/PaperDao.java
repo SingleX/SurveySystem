@@ -15,6 +15,7 @@ public interface PaperDao {
 //	Paper showResultByPaperId(int paperId);
 	
 	int addPapers(Paper paper);
+	int modifiedStatusBypaperId(int paperId);
 	int deletePaperByPaperId(int paperId);
 	int deletePaperByUserId(int userId);
 	

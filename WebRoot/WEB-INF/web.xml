@@ -59,6 +59,20 @@
     <servlet-name>SurveyPage</servlet-name>
     <servlet-class>com.atoz.survey.control.SurveyPage</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ShowResult</servlet-name>
+    <servlet-class>com.atoz.survey.control.ShowResult</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>PubPaper</servlet-name>
+    <servlet-class>com.atoz.survey.control.PubPaper</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -103,6 +117,14 @@
   <servlet-mapping>
     <servlet-name>SurveyPage</servlet-name>
     <url-pattern>/surveyPage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowResult</servlet-name>
+    <url-pattern>/showResult</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PubPaper</servlet-name>
+    <url-pattern>/pubPaper</url-pattern>
   </servlet-mapping>	
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

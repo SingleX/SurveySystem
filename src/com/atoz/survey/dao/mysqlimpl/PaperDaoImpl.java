@@ -171,4 +171,9 @@ public class PaperDaoImpl extends BaseDao implements PaperDao {
 		return paperId;
 	}
 
+	public int modifiedStatusBypaperId(int paperId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

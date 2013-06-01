@@ -112,8 +112,8 @@ public class QuestionDaoImpl extends BaseDao implements QuestionDao {
 	public int deleteQusetionByPaperId(int paperId) {
 		// TODO Auto-generated method stub
 		getConn();
-		String sql = "delete * from Questions where paperId = ?";
-		doQuery(sql, paperId);
+		String sql = "delete from Questions where paperId = ?";
+		doOperate(sql, paperId);
 		closeAll();
 
 		return result;

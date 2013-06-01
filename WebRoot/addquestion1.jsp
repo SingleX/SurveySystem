@@ -16,7 +16,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-responsive.css">
+	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+	<!--[if lt IE 9]>
+      	<script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<style type="text/css">
 		body {
 			padding-top: 20px;
@@ -45,15 +52,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.marketing p + h4 {
 			margin-top: 28px;
 		}
+		.controls input{
+		 	height:30px;
+		 	line-height:30px;
+		}
 	</style>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/bootstrap-responsive.css">
-	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-	<!--[if lt IE 9]>
-      	<script src="js/html5shiv.js"></script>
-    <![endif]-->
-    <script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	
   </head>
   
   <body>
@@ -110,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					      <input type="text" id="inputOption" placeholder="输入选项内容" name="qstOption4">
 					    </div>
 				    </div>
-				    <input type="submit" name="sumbit" class="btn btn-success buttonspace" value="继续添加">
+				    <input type="submit" name="sumbit" class="btn btn-success" value="继续添加">
     		</form>
     		
     	</div>

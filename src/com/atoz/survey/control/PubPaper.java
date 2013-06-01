@@ -1,6 +1,7 @@
 package com.atoz.survey.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,25 +11,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.atoz.survey.dao.PaperDao;
-import com.atoz.survey.dao.QuestionDao;
 import com.atoz.survey.dao.mysqlimpl.PaperDaoImpl;
-import com.atoz.survey.dao.mysqlimpl.QuestionDaoImpl;
 import com.atoz.survey.po.Paper;
+import com.atoz.survey.po.Question;
 import com.atoz.survey.po.User;
 
-public class DeletePage extends HttpServlet {
+public class PubPaper extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public DeletePage() {
+	public PubPaper() {
 		super();
 	}
 
 	/**
 	 * Destruction of the servlet. <br>
 	 */
-	@Override
 	public void destroy() {
 		super.destroy(); // Just puts "destroy" string in log
 		// Put your code here
@@ -44,32 +43,10 @@ public class DeletePage extends HttpServlet {
 	 * @throws ServletException if an error occurred
 	 * @throws IOException if an error occurred
 	 */
-	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String paperIdString = request.getParameter("paperId");
-		
-		HttpSession session = request.getSession();
-		User user = (User)session.getAttribute("userInfo");
-		
-		if(paperIdString != null && user != null){
-			int paperId = Integer.parseInt(paperIdString);
-			int userId = user.getUserId();
-			
-			PaperDao paperDao = new PaperDaoImpl();
-			 int paperNum = paperDao.deletePaperByPaperId(paperId);
-			QuestionDao questionDao = new QuestionDaoImpl(); 
-			int questionNum = questionDao.deleteQusetionByPaperId(paperId);
-			PaperDaoImpl paperDaoImpl = new PaperDaoImpl();
-			List<Paper> papers = paperDaoImpl.findPaperByUserId(userId);
-			
-			session.setAttribute("papers", papers);
-			response.sendRedirect("home.jsp");
-			
-		}
-		
-		
+		doPost(request, response);
 	}
 
 	/**
@@ -82,11 +59,21 @@ public class DeletePage extends HttpServlet {
 	 * @throws ServletException if an error occurred
 	 * @throws IOException if an error occurred
 	 */
-	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		doGet(request,response);
+		
+		PaperDao paperDao = new PaperDaoImpl();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("userInfo");
+		
+		if(user != null)
+		{
+			int userId = user.getUserId();
+			
+			List<Paper> papers = paperDao.findPaperByUserId(userId);
+			session.setAttribute("papers", papers);
+			response.sendRedirect("home.jsp");
+		}
 	}
 
 	/**
@@ -94,7 +81,6 @@ public class DeletePage extends HttpServlet {
 	 *
 	 * @throws ServletException if an error occurs
 	 */
-	@Override
 	public void init() throws ServletException {
 		// Put your code here
 	}

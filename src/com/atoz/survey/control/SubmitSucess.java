@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.atoz.survey.dao.QuestionDao;
 import com.atoz.survey.dao.mysqlimpl.QuestionDaoImpl;
+import com.atoz.survey.po.Question;
 
 public class SubmitSucess extends HttpServlet {
 
@@ -64,55 +65,68 @@ public class SubmitSucess extends HttpServlet {
 			QuestionDao questionDao = new QuestionDaoImpl();
 			
 			HttpSession session = request.getSession();
-			String paperIdString =(String) session.getAttribute("paperId");
-			int paperId = Integer.parseInt(paperIdString);
+			Integer paperIdString =(Integer) session.getAttribute("paperId");
+			int paperId = paperIdString.intValue();
 			
 			String totalNumString = request.getParameter("totalNum");
 			int totalNum = Integer.parseInt(totalNumString);
 			
-			int[] answers = new int[totalNum];
+			String answers[] = new String[totalNum];
+			
 			for (int i = 0; i < answers.length; i++) {
-				String ss = "" + "q" + (i + 1);
-				
+				String ss =  "q" + (i + 1);
+				// 在这里要处理到底是问答题还是选择题。
 				String answerString = request.getParameter(ss);
-				int answer = Integer.parseInt(answerString);
 				
-				answers[i] = answer;
+				
+				answers[i] = answerString;  //得到答案的字符串
 			}
 			
-			List<String> strings = questionDao.findQstAnswerByPaperId(paperId);
-			int j = 0;
-			for(String string : strings){
-				String regex = "&";
-				String[] answerNumString = string.split(regex);
-				int[] answerNum = new int[answerNumString.length];
-				for (int i = 0; i < answerNumString.length; i++) {
-					answerNum[i] = Integer.parseInt(answerNumString[i]);
+//			List<String> strings = questionDao.findQstAnswerByPaperId(paperId);
+			List<Question> questions = questionDao.findQuestionsByPaperId(paperId);
+			int j = 0; //记录题号
+			for (Question question : questions) {
+				if(question.getQstType() == 1){
+					String string = question.getQstAnswer();
+					String regex = "&";
+					String[] answerNumString = string.split(regex);
+					int[] answerNum = new int[answerNumString.length];
+					for (int i = 0; i < answerNumString.length; i++) {
+						answerNum[i] = Integer.parseInt(answerNumString[i]);
+						
+					}
+					int k = Integer.parseInt(answers[j]);
+					switch (k) {
+					case 1:
+						    answerNum[0] += 1;
+						break;
+					case 2:
+						 answerNum[1] += 1;
+						 break;
+					case 3:
+						 answerNum[2] += 1;
+						 break;
+					case 4:
+						 answerNum[3] += 1;
+						 break;
+						 
+					default:
+						break;
+					}
+					//将修改后的答案写入数据库
+					String newAnswer = answerNum[0] + "&" +answerNum[1] + "&" +answerNum[2] + "&" +answerNum[3];
+					
+					questionDao.updateQuestions(question.getQstId(), newAnswer);
+					
 				}
-				switch (answers[j]) {
-				case 1:
-					    answerNum[1] += 1;
-					break;
-				case 2:
-					 answerNum[2] += 1;
-					 break;
-				case 3:
-					 answerNum[3] += 1;
-					 break;
-				case 4:
-					 answerNum[4] += 1;
-					 break;
-					 
-				default:
-					break;
+				else  if(question.getQstType() == 2){
+					questionDao.updateQuestions(question.getQstId(), answers[j]);
 				}
-				//将修改后的答案写入数据库
-				String newAnswer = answerNum[1] + "&" +answerNum[2] + "&" +answerNum[3] + "&" +answerNum[4];
-				
-				questionDao.updateQuestions(answerNum[0], newAnswer);
-				
-				response.sendRedirect("sucess.jsp");
+				j++;
 			}
+				
+				response.sendRedirect("success2.jsp");
+			
 	}
 
 	/**

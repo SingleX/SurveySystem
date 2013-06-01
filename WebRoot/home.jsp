@@ -130,11 +130,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				Paper paper = papers.get(i);
     			 %>
     			<tr>
-    				<td><a href="SurveyPage?paperId=3" style='font-color:#00000;'><%=paper.getPaperTitle() %></a></td>
+    				<td><a href="surveyPage?paperId=<%=paper.getPaperId() %>" ><%=paper.getPaperTitle() %></a></td>
     				<td><%=paper.getPaperStartDate() %></td>
     				<td><%=paper.getPaperCount() %></td>
-    				<td><a href="ShowResult?paperId=3" class="btn btn-small">查看结果</a></td>
-    				<td><a href="DeletePage?paperId=3" class="btn btn-small btn-danger">删除</a></td>
+    				<td><a href="showresult.jsp?paperId=<%=paper.getPaperId() %>" class="btn btn-small">查看结果</a></td>
+    				<td><a href="deletePage?paperId=<%=paper.getPaperId() %>" class="btn btn-small btn-danger">删除</a></td>
     				</tr>
     				<%
     				} %>
@@ -145,14 +145,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			<div class="right-button">
 	    				<div class="row">
 	    					<div class="span2"></div>
-	    					<div class="span8 btn btn-success fabu"><a href="addpaper.jsp">发布问卷</a></div>
+	    					<div class="span8 fabu"><a href="addpaper.jsp" class="btn btn-success">发布问卷</a></div>
 	    					<div class="span2"></div>
 	    				</div>
-	    				<div class="row buttonspace">
-	    					<div class="span2"></div>
-	    					<div class="span8 btn btn-success">XXX</div>
-	    					<div class="span2"></div>
-	    				</div>
+	    				
 	    			</div>
     			</div>
     		</div>

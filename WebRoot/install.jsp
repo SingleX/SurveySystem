@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			pstmt = conn.prepareStatement(sql);
 			pstmt.executeUpdate();
 			out.print("创建表成功：Questions<br>");
-			sql = "INSERT INTO Questions VALUES(NULL, '1', '1', 'First Question', 'A:刘红军;B:李朋伟 ;C:袁佑 ;D:郭宝星', '4;2;3;2')";
+			sql = "INSERT INTO Questions VALUES(NULL, '1', '1', 'First Question', 'A:刘红军#B:李朋伟 #C:袁佑 #D:郭宝星', '4&2&3&2')";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.executeUpdate();
 			out.print("插入数据成功：Questions<br>");

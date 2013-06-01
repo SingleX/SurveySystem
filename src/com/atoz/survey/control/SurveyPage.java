@@ -3,6 +3,7 @@ package com.atoz.survey.control;
 import java.io.IOException;
 import java.util.List;
 
+import javax.jms.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.atoz.survey.dao.mysqlimpl.QuestionDaoImpl;
 import com.atoz.survey.po.Question;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 public class SurveyPage extends HttpServlet {
 
@@ -45,14 +47,11 @@ public class SurveyPage extends HttpServlet {
 			throws ServletException, IOException {
 
 		String paperIdString = request.getParameter("paperId");
+		
 		int paperId = Integer.parseInt(paperIdString);
-		QuestionDaoImpl questionDaoImpl = new QuestionDaoImpl();
-		
-		List<Question> questions = questionDaoImpl.findQuestionsByPaperId(paperId);
-		
 		HttpSession session = request.getSession();
-		session.setAttribute("questions", questions);
-		response.sendRedirect("surverpage.jsp");
+		session.setAttribute("paperId", new Integer(paperId));
+		response.sendRedirect("surveypage.jsp");
 	}
 
 	/**
