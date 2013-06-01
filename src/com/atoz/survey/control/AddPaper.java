@@ -76,16 +76,14 @@ public class AddPaper extends HttpServlet {
 
 		paper.setUserId(userId);
 		
-		String paperTitle0 = request.getParameter("paperTitle");
-		String paperTitle = new String(paperTitle0.getBytes("ISO-8859-1"),"utf-8");
+		String paperTitle = request.getParameter("paperTitle");
 		paper.setPaperTitle(paperTitle);
 		
 		String paperTypeString = request.getParameter("paperType");
 		int paperType = Integer.parseInt(paperTypeString);
 		paper.setPaperType(paperType);
 		
-		String paperSummary0 = request.getParameter("paperSummary");
-		String paperSummary = new String(paperSummary0.getBytes("ISO-8859-1"),"utf-8");
+		String paperSummary = request.getParameter("paperSummary");
 		paper.setPaperSummary(paperSummary);
 		
 		String paperBg = request.getParameter("paperBg");
