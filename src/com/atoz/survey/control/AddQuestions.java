@@ -73,7 +73,8 @@ public class AddQuestions extends HttpServlet {
 //		@SuppressWarnings("unchecked")
 //		List<String> qstContent = (List<String>) session.getAttribute("qstContent");
 		
-		String qstTitle = request.getParameter("qstTitle");
+		String qstTitle0 = request.getParameter("qstTitle");
+		String qstTitle = new String(qstTitle0.getBytes("ISO-8859-1"),"utf-8");
 		question.setQstTitle(qstTitle);
 		
 		String qstTypeString = request.getParameter("qstType"); // 问题类型
@@ -81,10 +82,17 @@ public class AddQuestions extends HttpServlet {
 		question.setQstType(qstType);
 		
 		if(qstType == 1){
-			String qstNum1 = request.getParameter("qstOption1");
-			String qstNum2 = request.getParameter("qstOption2");
-			String qstNum3 = request.getParameter("qstOption3");
-			String qstNum4 = request.getParameter("qstOption4");
+			String qstNum10 = request.getParameter("qstOption1");
+			String qstNum1 = new String(qstNum10.getBytes("ISO-8859-1"),"utf-8");
+			
+			String qstNum20 = request.getParameter("qstOption2");
+			String qstNum2 = new String(qstNum20.getBytes("ISO-8859-1"),"utf-8");
+			     
+			String qstNum30 = request.getParameter("qstOption3");
+			String qstNum3 = new String(qstNum30.getBytes("ISO-8859-1"),"utf-8");
+			    
+			String qstNum40 = request.getParameter("qstOption4");
+			String qstNum4 = new String(qstNum40.getBytes("ISO-8859-1"),"utf-8");
 			
 			String content =qstNum1 +"#"+qstNum2 +"#"+qstNum3+"#"+qstNum4;
 			question.setQstOption(content);

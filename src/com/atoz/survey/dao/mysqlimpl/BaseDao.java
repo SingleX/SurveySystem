@@ -32,7 +32,7 @@ public class BaseDao {
 	 * Connect Database
 	 */
 	public void getConn() {
-		String url = "jdbc:mysql://localhost:3306/survey?user=root&password=lys091112&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false";
+		String url = "jdbc:mysql://localhost:3306/survey?user=root&password=123456&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false";
 		try {
 			conn = DriverManager.getConnection(url);
 		} catch (Exception e) {

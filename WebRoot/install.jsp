@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	try {
 		String sql = "";
-		String url = "jdbc:mysql://localhost:3306/survey?user=root&password=lys091112&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false";
+		String url = "jdbc:mysql://localhost:3306/survey?user=root&password=123456&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false";
 		conn = DriverManager.getConnection(url);
 		DatabaseMetaData meta;
 		String[] tableName = {"Users", "Papers", "Questions"};
